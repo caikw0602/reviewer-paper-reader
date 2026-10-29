@@ -48,6 +48,8 @@
 
 ### 2. 安装技能目录
 
+你可以[下载完整仓库](https://github.com/caikw0602/reviewer-paper-reader/archive/refs/heads/main.zip)，其中包含说明、图片与技能；也可以[仅下载 v1.0 技能安装包](downloads/reviewer-paper-reader-v1.0.zip)。技能安装包解压后得到完整的 `reviewer-paper-reader/` 文件夹，在其上一级目录执行下方复制命令即可。
+
 下载本仓库 ZIP 并解压，或克隆仓库。在包含本 README 的仓库根目录中，将整个 `reviewer-paper-reader/` 文件夹复制到 Codex 技能目录。
 
 macOS / Linux，使用默认目录时：
@@ -455,6 +457,8 @@ v1.0 整理了两篇开发试读及其核查后的方法，尚未完成流程对
 ├── README.md                              # 人类使用说明
 ├── assets/
 │   └── reviewer-paper-reader-cover.png    # README 顶部配图
+├── downloads/
+│   └── reviewer-paper-reader-v1.0.zip      # 完整技能安装包
 ├── docs/
 │   └── cover-prompt.md                    # imagegen 最终提示词与生成记录
 └── reviewer-paper-reader/                 # 安装时复制这个文件夹
