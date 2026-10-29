@@ -4,7 +4,11 @@
 
 Reviewer Paper Reader · v1.0
 
-用于个人科研学习的 Codex skill，适合阅读 AI、机器学习、多模态、智能体和机器人领域的论文。提供一篇论文，就可以开始阅读；也可以只问某个方法、公式或实验。
+用于个人科研学习的论文阅读 skill，适合阅读 AI、机器学习、多模态、智能体和机器人领域的论文。提供一篇论文，就可以开始阅读；也可以只问某个方法、公式或实验。
+
+下文提供 Claude、Claude Code、WorkBuddy、Codex、Cursor 和 OpenCode 的安装说明。
+
+[下载 v1.0](downloads/reviewer-paper-reader-v1.0.zip) · [选择安装方式](#安装) · [开始阅读](#开始阅读)
 
 ## 读完能得到什么
 
@@ -20,25 +24,81 @@ Reviewer Paper Reader · v1.0
 
 ## 安装
 
-先[下载 v1.0 技能包](downloads/reviewer-paper-reader-v1.0.zip)，解压后，将整个 `reviewer-paper-reader` 文件夹放入 Codex 的技能目录。
+先[下载 v1.0 技能包](downloads/reviewer-paper-reader-v1.0.zip)，再按自己使用的平台安装。上传技能时选择这个 ZIP；手动安装时，先解压，再复制整个 `reviewer-paper-reader` 文件夹。
 
-使用默认目录的 macOS / Linux 用户，可以在解压后的目录运行：
+### Claude 网页版 / 桌面版
+
+1. 在设置中开启文件创建与代码执行能力（Create and edit files / Code execution and file creation）。
+2. 进入 **Customize → Skills**，点击 **+ → Create skill → Upload a skill**。
+3. 上传下载的 `reviewer-paper-reader-v1.0.zip`，在技能列表中启用它。
+4. 回到对话，上传论文，发送下方的阅读请求。
+
+无需解压 ZIP。团队账号若没有上传入口，请联系管理员确认技能权限。[Claude 官方说明](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
+
+### WorkBuddy
+
+1. 在左侧打开 **专家·技能·连接器 → 技能**。
+2. 点击 **添加技能 → 上传技能**，选择 `reviewer-paper-reader-v1.0.zip`。
+3. 在“已安装”中确认技能已启用，然后在对话中上传论文并发出阅读请求。
+
+本包通过“上传技能”导入，不需要先在技能市场搜索。[WorkBuddy 官方说明](https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Skills-Market)
+
+### Claude Code
+
+将解压得到的文件夹放入 `~/.claude/skills/`。在解压后的目录运行：
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -R reviewer-paper-reader ~/.codex/skills/
+mkdir -p ~/.claude/skills
+cp -R reviewer-paper-reader ~/.claude/skills/
 ```
 
-如果已安装旧版，请先备份旧目录再替换。设置过 `CODEX_HOME` 的用户，安装到该目录下的 `skills/`。
+在 Claude Code 中输入 `/reviewer-paper-reader`，再附上论文与阅读要求。只想在当前项目使用，可改放到项目内的 `.claude/skills/`。[Claude Code 官方说明](https://code.claude.com/docs/en/skills)
 
-打开 Codex 对话，输入 `$reviewer-paper-reader` 调用。当前对话没有识别到时，可新建对话后再试。
+### Codex
+
+将解压得到的文件夹放入 `~/.agents/skills/`：
+
+```bash
+mkdir -p ~/.agents/skills
+cp -R reviewer-paper-reader ~/.agents/skills/
+```
+
+在 Codex 中输入 `$reviewer-paper-reader` 调用，或从技能选择器选中它。只想在当前项目使用，可放到项目内的 `.agents/skills/`。未识别到新技能时，重启 Codex 后再试。[Codex 官方说明](https://developers.openai.com/codex/skills/)
+
+### Cursor
+
+将解压得到的文件夹放入 `~/.cursor/skills/`：
+
+```bash
+mkdir -p ~/.cursor/skills
+cp -R reviewer-paper-reader ~/.cursor/skills/
+```
+
+在 Agent 对话中输入 `/`，搜索并选择 `reviewer-paper-reader`。只想在当前项目使用，可放到项目内的 `.cursor/skills/`。以上是本地 Agent 的安装方式；云端使用方式见 [Cursor 官方说明](https://cursor.com/docs/skills)。
+
+### OpenCode
+
+将解压得到的文件夹放入 `~/.config/opencode/skills/`：
+
+```bash
+mkdir -p ~/.config/opencode/skills
+cp -R reviewer-paper-reader ~/.config/opencode/skills/
+```
+
+在对话中说明“请使用 reviewer-paper-reader 阅读这篇论文”。只想在当前项目使用，可放到项目内的 `.opencode/skills/`。[OpenCode 官方说明](https://docs.opencode.ai/docs/skills/)
+
+上面的命令适用于 macOS / Linux。Windows 用户可在文件资源管理器中打开 `%USERPROFILE%`，按 `~` 后面的目录层级放置文件夹。例如，Claude Code 对应 `%USERPROFILE%\.claude\skills\reviewer-paper-reader\SKILL.md`。
+
+安装时请保留整个文件夹，勿只复制 `SKILL.md`，也不要额外嵌套一层同名目录。更新已有安装前，先备份旧文件夹。
+
+安装入口按各平台官方文档整理，尚未逐个平台实测。本 skill 使用当前 Agent 已有的 PDF 阅读、检索和文件工具；工具是否可用会影响全文获取、查新和笔记保存。
 
 ## 开始阅读
 
 上传 PDF 后，直接发送：
 
 ```text
-使用 $reviewer-paper-reader 阅读我上传的论文。
+请使用 reviewer-paper-reader 阅读我上传的论文。
 ```
 
 也可以提供论文链接、DOI、arXiv 编号，或当前项目中可访问的 PDF 路径。无需先填写背景资料。
@@ -46,7 +106,7 @@ cp -R reviewer-paper-reader ~/.codex/skills/
 如果有具体目标，可以一起说清楚：
 
 ```text
-使用 $reviewer-paper-reader 阅读这篇论文：[论文链接]。
+请使用 reviewer-paper-reader 阅读这篇论文：[论文链接]。
 我的研究方向是多模态智能体。
 请重点讲清方法、创新和实验，看看有哪些问题值得继续研究。
 ```
@@ -56,21 +116,21 @@ cp -R reviewer-paper-reader ~/.codex/skills/
 ### 先看看值不值得精读
 
 ```text
-使用 $reviewer-paper-reader 速读这篇论文：[论文]。
+请使用 reviewer-paper-reader 速读这篇论文：[论文]。
 先告诉我它做了什么、主要结果如何，以及哪些部分值得仔细看。
 ```
 
 ### 方法没看懂
 
 ```text
-使用 $reviewer-paper-reader 解释这篇论文的[方法或公式]。
+请使用 reviewer-paper-reader 解释这篇论文的[方法或公式]。
 请用一个具体例子讲清楚，必要的基础知识也一起解释。
 ```
 
 ### 想判断创新是否成立
 
 ```text
-使用 $reviewer-paper-reader 比较[论文A]和[论文B]。
+请使用 reviewer-paper-reader 比较[论文A]和[论文B]。
 它们的关键区别是什么？新增的部分是否有价值？
 请给出相关工作的依据。
 ```
@@ -78,7 +138,7 @@ cp -R reviewer-paper-reader ~/.codex/skills/
 ### 想从论文中找研究问题
 
 ```text
-使用 $reviewer-paper-reader 阅读[论文]。
+请使用 reviewer-paper-reader 阅读[论文]。
 结合我的[研究方向]，找一个值得先验证的问题。
 说清楚为什么值得做、先做什么实验、怎样判断是否继续。
 ```
@@ -86,14 +146,14 @@ cp -R reviewer-paper-reader ~/.codex/skills/
 ### 阅读 Zotero 中的论文
 
 ```text
-使用 $reviewer-paper-reader 阅读 Zotero 中的“[论文完整题名]”。
+请使用 reviewer-paper-reader 阅读 Zotero 中的“[论文完整题名]”。
 ```
 
-此方式需要 Codex 已连接可用的 Zotero 工具。没有连接时，直接上传 PDF 或提供论文链接即可。
+此方式需要当前 Agent 已连接可用的 Zotero 工具。没有连接时，直接上传 PDF 或提供论文链接即可。
 
 ## 阅读结果
 
-回复中会先给出论文的主要内容和判断，详细笔记保存为 Markdown，方便后续整理和回看。笔记通常包括方法说明、相关工作比较、实验分析、研究建议，以及关键内容的原文位置或链接。
+回复中会先给出论文的主要内容和判断，详细笔记保存为 Markdown，方便后续整理和回看。笔记通常包括方法说明、相关工作比较、实验分析、研究建议，以及关键内容的原文位置或链接。保存到本地目录需要当前 Agent 有文件写入能力；网页端可要求提供可下载的 Markdown 文件。
 
 需要指定保存位置时，加一句：
 
