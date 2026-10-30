@@ -1,4 +1,4 @@
 interface:
-  display_name: "审稿式论文精读 v1.0"
-  short_description: "讲透核心思想，核查创新与实验证据，从论文形成可验证的研究候选"
-  default_prompt: "使用 $reviewer-paper-reader 阅读这篇论文，讲清核心思想，核查创新与实验证据，并给出一个值得先验证的研究问题。"
+  display_name: "审稿式论文精读 v1.1"
+  short_description: "讲透核心思想，提炼论文发现的规律与边界，核查创新和证据，形成可验证的研究问题"
+  default_prompt: "使用 $reviewer-paper-reader 阅读这篇论文，讲清核心思想，分析论文增加的认识及规律边界，核查创新与证据，并给出一个值得先验证的研究问题。"

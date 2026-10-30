@@ -2,13 +2,13 @@
 
 # 审稿式论文精读
 
-Reviewer Paper Reader · v1.0
+Reviewer Paper Reader · v1.1
 
-用于个人科研学习的论文阅读 skill，适合阅读 AI、机器学习、多模态、智能体和机器人领域的论文。提供一篇论文，就可以开始阅读；也可以只问某个方法、公式或实验。
+用于个人科研学习的论文阅读 skill，适合阅读 AI、机器学习、多模态、智能体和机器人领域的论文。帮助你读懂作者做了什么、增加了什么认识，以及哪些问题值得接着研究。提供一篇论文就能开始，也可以只问某个方法、公式或实验。
 
 下文提供 Claude、Claude Code、WorkBuddy、Codex、Cursor 和 OpenCode 的安装说明。
 
-[下载 v1.0](downloads/reviewer-paper-reader-v1.0.zip) · [选择安装方式](#安装) · [开始阅读](#开始阅读)
+[下载 v1.1](downloads/reviewer-paper-reader-v1.1.zip) · [选择安装方式](#安装) · [开始阅读](#开始阅读)
 
 ## 读完能得到什么
 
@@ -16,21 +16,24 @@ Reviewer Paper Reader · v1.0
 
 - 作者解决的是什么问题，为什么值得研究？
 - 方法到底改了什么，为什么这样做，用一个例子能否说明白？
-- 与已有工作相比，新在哪里，贡献有多大？
-- 实验说明了什么，还有哪些结论缺少支持？
+- 论文发现了什么关系或规律，在什么条件下成立，有哪些例外？
+- 与已有工作相比，方法和认识分别新在哪里，贡献有多大？
+- 实验说明了什么，哪些是直接结果，哪些仍是解释或推测？
 - 对自己的研究有什么启发，下一步值得先验证什么？
 
-如果你正准备选题，可以补充自己的研究方向。阅读结果会围绕这个方向给出一个值得优先考虑的问题，说明先做什么验证，以及什么结果意味着应该换个方向。暂时找不到合适的问题时，也会直接说明。
+方法论文、现象分析和定量研究都可以读。论文没有建立新规律时，会说明它实际带来了什么方法、能力或资源，不会为了凑结论硬提炼一条规律。
+
+如果你正准备选题，可以补充自己的研究方向。阅读结果会围绕这个方向给出一个值得优先考虑的问题，说明它可能增加什么认识、先做什么验证，以及什么结果意味着应该换个方向。暂时找不到合适的问题时，也会直接说明。
 
 ## 安装
 
-先[下载 v1.0 技能包](downloads/reviewer-paper-reader-v1.0.zip)，再按自己使用的平台安装。上传技能时选择这个 ZIP；手动安装时，先解压，再复制整个 `reviewer-paper-reader` 文件夹。
+先[下载 v1.1 技能包](downloads/reviewer-paper-reader-v1.1.zip)，再按自己使用的平台安装。上传技能时选择这个 ZIP；手动安装时，先解压，再复制整个 `reviewer-paper-reader` 文件夹。
 
 ### Claude 网页版 / 桌面版
 
 1. 在设置中开启文件创建与代码执行能力（Create and edit files / Code execution and file creation）。
 2. 进入 **Customize → Skills**，点击 **+ → Create skill → Upload a skill**。
-3. 上传下载的 `reviewer-paper-reader-v1.0.zip`，在技能列表中启用它。
+3. 上传下载的 `reviewer-paper-reader-v1.1.zip`，在技能列表中启用它。
 4. 回到对话，上传论文，发送下方的阅读请求。
 
 无需解压 ZIP。团队账号若没有上传入口，请联系管理员确认技能权限。[Claude 官方说明](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
@@ -38,7 +41,7 @@ Reviewer Paper Reader · v1.0
 ### WorkBuddy
 
 1. 在左侧打开 **专家·技能·连接器 → 技能**。
-2. 点击 **添加技能 → 上传技能**，选择 `reviewer-paper-reader-v1.0.zip`。
+2. 点击 **添加技能 → 上传技能**，选择 `reviewer-paper-reader-v1.1.zip`。
 3. 在“已安装”中确认技能已启用，然后在对话中上传论文并发出阅读请求。
 
 本包通过“上传技能”导入，不需要先在技能市场搜索。[WorkBuddy 官方说明](https://www.codebuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Skills-Market)
@@ -63,7 +66,7 @@ mkdir -p ~/.agents/skills
 cp -R reviewer-paper-reader ~/.agents/skills/
 ```
 
-在 Codex 中输入 `$reviewer-paper-reader` 调用，或从技能选择器选中它。只想在当前项目使用，可放到项目内的 `.agents/skills/`。未识别到新技能时，重启 Codex 后再试。[Codex 官方说明](https://developers.openai.com/codex/skills/)
+在 Codex 中输入 `$reviewer-paper-reader` 调用，或从技能选择器选中它。只想在当前项目使用，可放到项目内的 `.agents/skills/`。未识别到新技能时，重启 Codex 后再试。[Codex 官方说明](https://learn.chatgpt.com/docs/build-skills)
 
 ### Cursor
 
@@ -89,7 +92,9 @@ cp -R reviewer-paper-reader ~/.config/opencode/skills/
 
 上面的命令适用于 macOS / Linux。Windows 用户可在文件资源管理器中打开 `%USERPROFILE%`，按 `~` 后面的目录层级放置文件夹。例如，Claude Code 对应 `%USERPROFILE%\.claude\skills\reviewer-paper-reader\SKILL.md`。
 
-安装时请保留整个文件夹，勿只复制 `SKILL.md`，也不要额外嵌套一层同名目录。更新已有安装前，先备份旧文件夹。
+安装时请保留整个文件夹，勿只复制 `SKILL.md`，也不要额外嵌套一层同名目录。
+
+从 v1.0 升级时，先将旧的 `reviewer-paper-reader` 文件夹移到技能目录之外，再放入新版。通过 ZIP 导入的平台，可先移除旧项再上传 v1.1。安装后仍使用 `reviewer-paper-reader` 这个名称。
 
 安装入口按各平台官方文档整理，尚未逐个平台实测。本 skill 使用当前 Agent 已有的 PDF 阅读、检索和文件工具；工具是否可用会影响全文获取、查新和笔记保存。
 
@@ -108,7 +113,8 @@ cp -R reviewer-paper-reader ~/.config/opencode/skills/
 ```text
 请使用 reviewer-paper-reader 阅读这篇论文：[论文链接]。
 我的研究方向是多模态智能体。
-请重点讲清方法、创新和实验，看看有哪些问题值得继续研究。
+请重点讲清核心思想、论文发现的规律及其适用条件，
+判断创新和实验，再找一个值得先验证的问题。
 ```
 
 ## 常用读法
@@ -127,6 +133,14 @@ cp -R reviewer-paper-reader ~/.config/opencode/skills/
 请用一个具体例子讲清楚，必要的基础知识也一起解释。
 ```
 
+### 想知道论文增加了什么认识
+
+```text
+请使用 reviewer-paper-reader 阅读[论文]。
+它试图寻找什么规律，实际验证到了哪一步？
+请讲清成立条件、例外，以及哪些原因解释还需要证据。
+```
+
 ### 想判断创新是否成立
 
 ```text
@@ -140,7 +154,8 @@ cp -R reviewer-paper-reader ~/.config/opencode/skills/
 ```text
 请使用 reviewer-paper-reader 阅读[论文]。
 结合我的[研究方向]，找一个值得先验证的问题。
-说清楚为什么值得做、先做什么实验、怎样判断是否继续。
+说清楚这个问题可能增加什么认识、先做什么验证、
+出现什么结果时应该继续，什么结果时应该停止。
 ```
 
 ### 阅读 Zotero 中的论文
@@ -153,7 +168,7 @@ cp -R reviewer-paper-reader ~/.config/opencode/skills/
 
 ## 阅读结果
 
-回复中会先给出论文的主要内容和判断，详细笔记保存为 Markdown，方便后续整理和回看。笔记通常包括方法说明、相关工作比较、实验分析、研究建议，以及关键内容的原文位置或链接。保存到本地目录需要当前 Agent 有文件写入能力；网页端可要求提供可下载的 Markdown 文件。
+回复中会先给出论文的主要内容和判断，详细笔记保存为 Markdown，方便后续整理和回看。笔记通常包括核心思想、论文增加的认识与适用边界、相关工作比较、实验分析、研究建议，以及关键内容的原文位置或链接。保存到本地目录需要当前 Agent 有文件写入能力；网页端可要求提供可下载的 Markdown 文件。
 
 需要指定保存位置时，加一句：
 
@@ -193,4 +208,4 @@ cp -R reviewer-paper-reader ~/.config/opencode/skills/
 
 ---
 
-[下载技能包](downloads/reviewer-paper-reader-v1.0.zip) · [下载完整仓库](https://github.com/caikw0602/reviewer-paper-reader/archive/refs/heads/main.zip)
+[下载技能包](downloads/reviewer-paper-reader-v1.1.zip) · [下载完整仓库](https://github.com/caikw0602/reviewer-paper-reader/archive/refs/heads/main.zip)
